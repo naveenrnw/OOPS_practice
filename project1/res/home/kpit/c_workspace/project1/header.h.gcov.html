@@ -1,0 +1,144 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - coverage.info - /home/kpit/c_workspace/project1/header.h</title>
+  <link rel="stylesheet" type="text/css" href="../../../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../../../index.html">top level</a> - <a href="index.html">home/kpit/c_workspace/project1</a> - header.h<span style="font-size: 80%;"> (source / <a href="header.h.func-sort-c.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">coverage.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">9</td>
+            <td class="headerCovTableEntry">13</td>
+            <td class="headerCovTableEntryLo">69.2 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2018-08-22 11:11:20</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">8</td>
+            <td class="headerCovTableEntry">13</td>
+            <td class="headerCovTableEntryLo">61.5 %</td>
+          </tr>
+          <tr><td><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span>            : #include &lt;algorithm&gt;</a>
+<span class="lineNum">       2 </span>            : #include &lt;cmath&gt;
+<span class="lineNum">       3 </span>            : #include &lt;ctime&gt;
+<span class="lineNum">       4 </span>            : #include &lt;fstream&gt;
+<span class="lineNum">       5 </span>            : #include &lt;functional&gt;
+<span class="lineNum">       6 </span>            : #include &lt;iostream&gt;
+<span class="lineNum">       7 </span>            : #include &lt;map&gt;
+<span class="lineNum">       8 </span>            : #include &lt;memory&gt;
+<span class="lineNum">       9 </span>            : #include &lt;numeric&gt;
+<span class="lineNum">      10 </span>            : #include &lt;string&gt;
+<span class="lineNum">      11 </span>            : #include &lt;vector&gt;
+<span class="lineNum">      12 </span>            : #include &quot;json.hpp&quot;
+<span class="lineNum">      13 </span>            : 
+<span class="lineNum">      14 </span>            : using namespace std;
+<span class="lineNum">      15 </span>            : 
+<span class="lineNum">      16 </span>            : /**Defining new base class with name Sensor having constructor and distructor */
+<span class="lineNum">      17 </span>            : class Sensor {
+<span class="lineNum">      18 </span>            :   std::string SensorName;
+<span class="lineNum">      19 </span>            :   std::string TimeStamp;
+<a name="20"><span class="lineNum">      20 </span>            : </a>
+<span class="lineNum">      21 </span>            :  public:
+<a name="22"><span class="lineNum">      22 </span><span class="lineCov">       1328 :   explicit Sensor(const std::string &amp;name, const std::string &amp;t)</span></a>
+<span class="lineNum">      23 </span><span class="lineCov">       1328 :       : SensorName(name), TimeStamp(t) {}</span>
+<a name="24"><span class="lineNum">      24 </span><span class="lineCov">       1328 :   virtual ~Sensor() {}</span></a>
+<span class="lineNum">      25 </span>            :   // virtual double MaxAcceleration() { }
+<a name="26"><span class="lineNum">      26 </span><span class="lineNoCov">          0 :   virtual double MaxIntensity() {}</span></a>
+<span class="lineNum">      27 </span>            :   // operator=(double); // TODO equating time or acc
+<a name="28"><span class="lineNum">      28 </span><span class="lineNoCov">          0 :   virtual double Abs_acc(void) {}</span></a>
+<a name="29"><span class="lineNum">      29 </span>            :   // virtual void display(void) { }</a>
+<span class="lineNum">      30 </span><span class="lineNoCov">          0 :   virtual double GetValue() {}</span>
+<span class="lineNum">      31 </span><span class="lineNoCov">          0 :   virtual void SetMaxInt(Sensor *) {}</span>
+<span class="lineNum">      32 </span>            :   // virtual double GetInt(void) { }
+<span class="lineNum">      33 </span>            :   int operator-(string &amp;ref);
+<span class="lineNum">      34 </span>            : };
+<span class="lineNum">      35 </span>            : 
+<span class="lineNum">      36 </span>            : /**New Derived class Accelerometer using base class Sensor having 3 attributes
+<span class="lineNum">      37 </span>            :  * and some member functions*/
+<span class="lineNum">      38 </span>            : class Accelerometer : public Sensor {
+<span class="lineNum">      39 </span>            :   double accx;
+<span class="lineNum">      40 </span>            :   double accy;
+<span class="lineNum">      41 </span>            :   double accz;
+<a name="42"><span class="lineNum">      42 </span>            :   // string time_stamp;</a>
+<span class="lineNum">      43 </span>            :  public:
+<span class="lineNum">      44 </span><span class="lineCov">        664 :   Accelerometer(const std::string &amp;str, double a, double b, double c,</span>
+<a name="45"><span class="lineNum">      45 </span>            :                 const std::string &amp;t)</a>
+<span class="lineNum">      46 </span><span class="lineCov">        664 :       : Sensor(str, t), accx(a), accy(b), accz(c) {}</span>
+<span class="lineNum">      47 </span><span class="lineCov">       1328 :   ~Accelerometer() {}</span>
+<span class="lineNum">      48 </span>            :   double Abs_acc(void);
+<span class="lineNum">      49 </span>            :   void display(void);
+<span class="lineNum">      50 </span>            :   double GetValue(void);
+<span class="lineNum">      51 </span>            :   // double MaxAcceleration();
+<span class="lineNum">      52 </span>            : };
+<span class="lineNum">      53 </span>            : /**New Derived class from base class Sensor with 2 attributes and some functions
+<span class="lineNum">      54 </span>            :  * described*/
+<span class="lineNum">      55 </span>            : class Sound : public Sensor {
+<span class="lineNum">      56 </span>            :   double Intensity;
+<span class="lineNum">      57 </span>            :   double MaxSoundIntensity;
+<a name="58"><span class="lineNum">      58 </span>            : </a>
+<span class="lineNum">      59 </span>            :  public:
+<a name="60"><span class="lineNum">      60 </span><span class="lineCov">        664 :   Sound(const std::string &amp;str, const std::string &amp;t, double a)</span></a>
+<span class="lineNum">      61 </span><span class="lineCov">        664 :       : Sensor(str, t), Intensity(a), MaxSoundIntensity(-1) {}</span>
+<span class="lineNum">      62 </span><span class="lineCov">       1328 :   ~Sound() {}</span>
+<span class="lineNum">      63 </span>            :   // void display();
+<span class="lineNum">      64 </span>            :   double MaxIntensity(void);
+<span class="lineNum">      65 </span>            :   void SetMaxInt(Sensor *ref);
+<span class="lineNum">      66 </span>            :   // double GetInt(void);
+<span class="lineNum">      67 </span>            :   double GetValue(void);
+<span class="lineNum">      68 </span>            : };
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.13</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>
